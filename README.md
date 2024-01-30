@@ -1,2 +1,2 @@
 # Instagram-Clone
- https://khaleeed-hue.github.io/instagram/
+ https://Httpkhalid.github.io/instagram/
